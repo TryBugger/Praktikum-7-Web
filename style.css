@@ -1,0 +1,81 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    text-align: center;
+    background-color: #9eecfa;
+}
+
+.bodyDM {
+    background-color: #021855;
+    color: whitesmoke;
+}
+
+.contentDM {
+    background-color: #17d4a5;
+    color: #05412f;
+
+    border: 3px solid #5cfcd4;
+}
+
+.inactiveLink {
+    pointer-events: none;
+}
+
+h1 {
+    margin: 80px 10px;
+}
+
+.regionContainer {
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 10px 480px;
+}
+
+.regionOption {
+    padding: 10px 25px;
+
+    background-color: #5cfcd4;
+    cursor: pointer;
+
+    border: 1.8px solid #17d4a5;
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+.regionOutput {
+    margin: 30px 200px;
+    padding: 40px 30px;
+
+    background-color: #5cfcd4;
+
+    border: 3px solid #17d4a5;
+    border-radius: 15px;
+
+    font-size: 28px;
+}
+
+.darkMode {
+    padding: 10px 20px;
+
+    background-color: #5cfcd4;
+
+    border: 1.8px solid #17d4a5;
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+.imgContainer {
+    margin: 40px;
+}
+
+.imgGIF {
+    border: 3px solid #17d4a5;
+    border-radius: 5px;
+
+    padding: 5px;
+}

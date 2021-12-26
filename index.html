@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Praktikum 7</title>
+</head>
+<body>
+    <h1>Data Wilayah Indonesia</h1>
+    
+    <div class="regionContainer">
+        <select name="provinsi" id="provinsi" class="regionOption" onchange="dataKota()">
+            <option value="" selected>Provinsi</option>
+            <option value="bali">Bali</option>
+            <option value="jawatimur">Jawa Timur</option>
+            <option value="jawatengah">Jawa Tengah</option>
+            <option value="jawabarat">Jawa Barat</option>
+        </select>
+
+        <select name="kota" id="kota" class="regionOption inactiveLink" onchange="outputDaerah()">
+            <option value="" selected>Kota</option>
+            <option id='kota1' value=""></option>
+            <option id='kota2' value=""></option>
+            <option id='kota3' value=""></option>
+            <option id='kota4' value=""></option>
+            <option id='kota5' value=""></option>
+        </select>
+    </div>
+
+    <div id="regionOutput" class="regionOutput">Pilih Opsi Diatas</div>
+
+    <button id="darkMode" class="darkMode" onclick="darkMode()">Dark Mode</button>
+
+    <div class="imgContainer">
+        <img id="imgGIF" class="imgGIF" src="Naruto vs Sasuke 1.gif" alt="" width="400" height="200">
+    </div>
+</body>
+
+<script>
+    const dataDaerah = {
+        "bali" : ["Jembrana", "Gilimanuk", "Denpasar", "Pekutatan", "Singaraja"],
+        "jawatimur" : ["Nganjuk", "Kediri", "Malang", "Batu", "Surabaya"],
+        "jawatengah" : ["Solo", "Magelang", "Pati", "Salatiga", "Kudus"],
+        "jawabarat" : ["Bekasi", "Bandung", "Bogor", "Depok", "Cirebon"]
+    };
+
+    function dataKota() {
+        provinsi = document.getElementById("provinsi");
+        kota = document.getElementById("kota");
+        
+        for(let i = 0; i < 5; i++) {
+            kotaList = document.getElementById(`kota${i+1}`);
+            kotaList.value = dataDaerah[`${provinsi.value}`][i];
+            kotaList.innerHTML = dataDaerah[`${provinsi.value}`][i];
+        }
+
+        kota.selectedIndex = 0;
+        kota.classList.remove("inactiveLink");
+
+        if(provinsi.options[0].value == "") {
+            provinsi.remove(0);
+        }
+    }
+
+    function outputDaerah() {
+        provinsi = document.getElementById("provinsi");
+        kota = document.getElementById("kota");
+        output = document.getElementById("regionOutput");
+
+        output.innerHTML = `pada provinsi <b>${provinsi.options[provinsi.selectedIndex].innerHTML}</b>
+            ada kota <b>${kota.options[kota.selectedIndex].innerHTML}</b>`;
+        
+        if(kota.options[0].value == "") {
+            kota.remove(0);
+        }
+    }
+
+    function darkMode() {
+        body = document.body;
+        output = document.getElementById("regionOutput");
+        regOption = document.getElementsByClassName("regionOption");
+        toggleBtn = document.getElementById("darkMode");
+        gif = document.getElementById("imgGIF");
+
+        body.classList.toggle("bodyDM");
+        output.classList.toggle("contentDM");
+        for(item of regOption) {
+            item.classList.toggle("contentDM");
+        }
+        toggleBtn.classList.toggle("contentDM");
+
+        toggleBtn = document.getElementById("darkMode");
+        if(toggleBtn.innerHTML == "Dark Mode") {
+            toggleBtn.innerHTML = "White Mode";
+            gif.setAttribute("src", "Naruto vs Sasuke 2.gif")
+        } else if(toggleBtn.innerHTML == "White Mode") {
+            toggleBtn.innerHTML = "Dark Mode";
+            gif.setAttribute("src", "Naruto vs Sasuke 1.gif")
+        }
+    }
+</script>
+</html>
